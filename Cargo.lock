@@ -631,8 +631,8 @@ checksum = "9b4f627cb1b25917193a259e49bdad08f671f8d9708acfd5fe0a8c1455d87220"
 
 [[package]]
 name = "perl-build"
-version = "0.1.1"
-source = "git+https://github.com/uperl/rust-perl-build?tag=v0.1.1#38ce59cef86c1f24a223e5a8d18826cf28d4dcbd"
+version = "0.1.2"
+source = "git+https://github.com/uperl/rust-perl-build?tag=v0.1.2#d24a7b302e4241d12b7ce809cb946ca661716249"
 dependencies = [
  "log",
  "metacpan-api-modern",
@@ -1200,7 +1200,7 @@ checksum = "8ecb6da28b8a351d773b68d5825ac39017e680750f980f3a1a85cd8dd28a47c1"
 
 [[package]]
 name = "uperl-perlbuild"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "anyhow",
  "env_logger",
