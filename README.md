@@ -44,7 +44,7 @@ uperl-perlbuild blead /opt/perl-blead
 | `-A <append>` | append `-A<append>` to the `./Configure` options (repeatable) |
 | `-U <undef>` | append `-U<undef>` to the `./Configure` options (repeatable) |
 | `--test` / `--no-test` | run the test suite after building (default: off) |
-| `-j`, `--jobs <n>` | build and test with `<n>` parallel jobs |
+| `-j`, `--jobs <n>` | build and test with `<n>` parallel jobs (default: the number of detected processor threads) |
 | `--build-dir <dir>` | unpack and build here (default: a temporary directory) |
 | `--tarball-dir <dir>` | download source tarballs here (default: a temporary directory) |
 | `--patches <plugin>` | set `PERL5_PATCHPERL_PLUGIN` for `patchperl` |
@@ -79,6 +79,8 @@ cpanm App::patchperl
   original; `.tgz` is treated as a version string.
 * `--version` reports this tool and whether `patchperl` was found, rather than
   the `Devel::PatchPerl` module version.
+* `-j` / `--jobs` defaults to the number of processor threads detected at
+  runtime; the original builds serially unless `-j` is given.
 
 ## License
 

@@ -103,10 +103,11 @@ async fn build(args: BuildArgs) -> anyhow::Result<()> {
         configure_options.insert(0, "-Dusedevel".to_string());
     }
 
-    let mut perl_build = PerlBuild::new(&dest).configure_options(configure_options);
-    if let Some(jobs) = jobs {
-        perl_build = perl_build.jobs(jobs);
-    }
+    let jobs = jobs.unwrap_or_else(default_jobs);
+
+    let mut perl_build = PerlBuild::new(&dest)
+        .configure_options(configure_options)
+        .jobs(jobs);
     if let Some(test) = test {
         perl_build = perl_build.test(test);
     }
@@ -156,6 +157,14 @@ async fn definitions() -> anyhow::Result<()> {
         println!("{}", release.version);
     }
     Ok(())
+}
+
+/// The `-j` default: the number of processor threads visible to this process,
+/// falling back to 1 when that cannot be determined.
+fn default_jobs() -> usize {
+    std::thread::available_parallelism()
+        .map(|n| n.get())
+        .unwrap_or(1)
 }
 
 /// Absolute form of `path`, resolved against the current directory, matching
@@ -245,6 +254,7 @@ OPTIONS:
     --test               run the test suite after building
     --no-test            do not run the test suite         (default)
     -j, --jobs <n>       build (and test) with <n> parallel jobs
+                         (default: the number of detected processor threads)
     --build-dir <dir>    unpack and build here             (default: a temp dir)
     --tarball-dir <dir>  download source tarballs here     (default: a temp dir)
     --patches <plugin>   set PERL5_PATCHPERL_PLUGIN for patchperl
