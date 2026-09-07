@@ -8,7 +8,11 @@ license = "MIT"
 
 [dependencies]
 anyhow = "1.0.104"
+perl-build = { version = "0.1.1", git = "https://github.com/uperl/rust-perl-build", tag = "v0.1.1" }
+tokio = { version = "1", default-features = false, features = ["rt", "net", "time"] }
+env_logger = "0.11"
 
+[dev-dependencies]
 
 [package.metadata.deb]
 maintainer = "Graham Ollis <devnull@wdlabs.com>"
@@ -22,4 +26,3 @@ assets = [
     ["README.md", "usr/share/doc/uperl-perlbuild/README.md", "644"],
     ["LICENSE", "usr/share/doc/uperl-perlbuild/LICENSE", "644"],
 ]
-
