@@ -1,0 +1,25 @@
+[package]
+name = "uperl-perlbuild"
+version = "0.1.0"
+edition = "2024"
+description = "perl binary builder"
+repository = "https://github.com/uperl/uperl-perlbuild"
+license = "MIT"
+
+[dependencies]
+anyhow = "1.0.104"
+
+
+[package.metadata.deb]
+maintainer = "Graham Ollis <devnull@wdlabs.com>"
+copyright = "Graham Ollis"
+extended-description = """\
+perl binary builder"""
+section = "utils"
+priority = "optional"
+assets = [
+    ["target/release/uperl-perlbuild", "usr/bin/", "755"],
+    ["README.md", "usr/share/doc/uperl-perlbuild/README.md", "644"],
+    ["LICENSE", "usr/share/doc/uperl-perlbuild/LICENSE", "644"],
+]
+
